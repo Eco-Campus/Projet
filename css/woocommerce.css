@@ -1,0 +1,215 @@
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto 50px auto;
+    background-color: #98c240 !important;
+    box-shadow: 0 3px #54613b;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.1s ease-in-out;
+    border: none;
+    color: white;
+}
+
+.woocommerce input.button {
+    padding: 0;
+}
+
+.woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover {
+    background-color: #679032 !important;
+    transition: 0.1s ease-in-out;
+    color: white;
+}
+
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+    font-family: "Lato", sans-serif;
+    font-weight: inherit;
+}
+
+.woocommerce form .form-row label.inline {
+    display: flex;
+    align-items: center;
+}
+
+#rememberme, .woocommerce form .form-row .input-checkbox {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.woocommerce ul.products li.product .price {
+    font-size: 1.2em;
+}
+
+#tab-description {
+    font-family: "Lato", sans-serif
+}
+
+.woocommerce ul.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 500px) {
+    .woocommerce-page ul.products li.product {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.woocommerce ul.products li.product .button {
+    margin-bottom: 20px;
+}
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    border-radius: 5px;
+    padding: 20px;
+    /*border: 1px solid #d3ced2;*/
+    /*width: 230px !important;*/
+    margin: 10px !important;
+    background-color: #f2f2f2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.woocommerce ul.products li.product:hover, .woocommerce-page ul.products li.product:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.woocommerce-error, .woocommerce-info, .woocommerce-message, .woocommerce-error li, .woocommerce-info li, .woocommerce-message li {
+    display: flex;
+    flex-direction: column-reverse;
+    font-family: 'Lato', sans-serif;
+}
+
+.woocommerce table.shop_table {
+    font-family: 'Lato', sans-serif;
+}
+
+.ui-widget-header {
+    background-color: #98c240 !important;
+}
+
+.woocommerce-billing-fields h3 {
+    margin: 0;
+}
+
+/*-----------------------------------------PAGE ACCUEIL PANIER-----------------------------------*/
+@media (min-width: 300px) {
+    #index > main > .taille > .woocommerce > .products > li.product {
+        width: 200px;
+    }
+}
+
+@media (min-width: 300px) {
+    #index > main > .taille > .woocommerce > .products > li.product .button {
+        width: 150px;
+    }
+}
+
+@media (min-width: 1000px) {
+    #index > main > .taille > .woocommerce > .products > li.product .button {
+        width: 165px;
+        margin: 30px auto;
+    }
+}
+
+/*----------------------------------------BOUTONS PAGE BOUTIQUE----------------------------------------*/
+@media (min-width: 769px) {
+    .post-type-archive > main > .taille > .products > .product > .button {
+        width: 130px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1000px) {
+    .post-type-archive > main > .taille > .products > .product > .button {
+        width: 160px;
+        margin: 30px auto;
+    }
+}
+
+/*------------------------------------------ARTICLE DESCRIPTION----------------------------------*/
+
+@media (max-width: 1000px) {
+    .product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .single-product > main > .taille > .product > .summary > .cart > button {
+        float: none;
+        margin: 20px auto 0 auto;
+    }
+}
+
+@media (min-width: 1000px) {
+    .single-product > main > .taille > .product > .summary > .cart > button {
+        margin: 0;
+    }
+}
+
+/*-------------------------------------PANIER-----------------------------------------------------*/
+
+@media (max-width: 1000px) {
+    .page-panier > main > .taille > .woocommerce {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .page-panier > main > .taille > .woocommerce > .cart-collaterals > .cart_totals {
+        display: flex;
+        flex-direction: column;
+        float: none;
+        margin: auto;
+    }
+}
+
+/*---------------------------------------------------FORMULAIRE PAIEMENT----------------------------*/
+@media (max-width: 1000px) {
+    .page-commande > main > .taille > .woocommerce > .woocommerce-checkout > .col2-set {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .page-commande > main > .taille > .woocommerce > .woocommerce-checkout > .col2-set > .col-1 {
+        width: 100%;
+    }
+
+    .page-commande > main > .taille > .woocommerce > .woocommerce-checkout > .col2-set > .col-2 {
+        width: 100%;
+    }
+
+    #place_order {
+        width: 30%;
+        float: none !important;
+    }
+}
+
+/*---------------------------------------------------PANIER DANS PAGE SINGLE-RECETTES ET INVERSEMENT------------*/
+
+@media (max-width: 600px) {
+    .single-recettes iframe, .single-product iframe {
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (min-width: 1000px) {
+    .single-product > main > .taille > .type-product > .woocommerce-tabs > .woocommerce-Tabs-panel > p {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+
+
+

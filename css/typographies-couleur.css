@@ -1,0 +1,115 @@
+p{
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+}
+
+li{
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+}
+
+.titre p, .titre2 p{
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 1.5em;
+    color: white;
+}
+
+h1{
+    color: #335554;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 2.5em;
+    font-weight: 400;
+}
+
+h2{
+    font-family: 'Alegreya Sans SC', sans-serif;
+    color: #335554;
+    font-size: 2em;
+    font-weight: 400;
+}
+
+h3{
+    color: #335554;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 1.5em !important;
+    font-weight: 400;
+}
+
+main a {
+    font-family: "Lato", sans-serif;
+}
+
+.bouton{
+    color: white;
+}
+
+input{
+    font-size: 1em;
+    font-family: "Lato", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #21212F;
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+}
+
+header a{
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+footer .menu > a{
+    font-family: 'Noto Serif', serif;
+    font-style: italic;
+}
+
+.gras{
+    font-weight: bold;
+    font-style: italic;
+}
+
+#boutique>main ul, #produit> main ul{
+    list-style-type: circle;
+    line-height: 30px;
+}
+
+.page-a-propos .equipe li, .page-a-propos .projet li{
+    list-style-type: circle;
+}
+
+.page-a-propos .equipe li{
+    line-height: 25px;
+}
+
+.page-a-propos .projet li:first-child{
+    padding-bottom: 10px;
+}
+
+.titre > .titrage > h2 {
+    color: white;
+    text-align: center;
+}
+
+@media(max-width: 800px){
+    .titre > .titrage > h2{
+        font-size: 1.3em;
+        margin-top: 0;
+    }
+}
+
+.titre a{
+    font-family: "Lato", sans-serif;
+}
+
+#produit > main > .taille > .infos-panier > p:nth-child(6), #produit > main > .taille > .infos-panier > p:nth-child(6)>a{
+    color: #98c240;
+}
+
+#recette > main > .taille > ul > li > a{
+    font-family: 'Noto Serif', serif;
+    font-style: italic;
+}
+
+
+
