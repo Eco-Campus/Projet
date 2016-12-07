@@ -575,8 +575,11 @@ footer > .taille > .contact > ul > li {
 .page-a-propos > main > .taille > .partenaire > div > ul {
     list-style-type: none;
     padding: 0;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-justify-content: center;
     justify-content: center;
 }
 
@@ -598,6 +601,8 @@ footer > .taille > .contact > ul > li {
 @media (min-width: 1000px) {
     .page-a-propos > main > .taille > .presentation {
         display: flex;
+        display: -webkit-flex;
+        -webkit-justify-content: space-around;
         justify-content: space-around;
         text-align: initial;
         width: 100%;
