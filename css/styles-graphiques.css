@@ -485,13 +485,6 @@ footer > .taille > .contact > ul > li {
     list-style-type: none;
 }
 
-/*---------------------------------------------BOUTIQUE----------------------------------------------------*/
-
-/*-Couleur étoiles-*/
-.star-rating > span::before{
-    color: #335554;
-}
-
 /*-----------------------------------A PROPOS--------------------------------------*/
 .page-a-propos > main > .taille > .presentation > .equipe > div {
     text-align: center;

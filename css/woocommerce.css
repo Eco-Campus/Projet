@@ -1,6 +1,9 @@
 .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
     display: flex;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
     justify-content: center;
+    -webkit-align-items: center;
     align-items: center;
     margin: 50px auto 50px auto;
     background-color: #98c240 !important;
@@ -31,6 +34,8 @@
 
 .woocommerce form .form-row label.inline {
     display: flex;
+    display: -webkit-flex;
+    -webkit-align-items: center;
     align-items: center;
 }
 
@@ -49,8 +54,11 @@
 
 .woocommerce ul.products {
     display: flex;
+    display: -webkit-flex;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     justify-content: center;
+    -webkit-justify-content: center;
 }
 
 @media (max-width: 500px) {
@@ -67,8 +75,6 @@
 .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
     border-radius: 5px;
     padding: 20px;
-    /*border: 1px solid #d3ced2;*/
-    /*width: 230px !important;*/
     margin: 10px !important;
     background-color: #f2f2f2;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);
@@ -81,7 +87,9 @@
 
 .woocommerce-error, .woocommerce-info, .woocommerce-message, .woocommerce-error li, .woocommerce-info li, .woocommerce-message li {
     display: flex;
+    display: -webkit-flex;
     flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
     font-family: 'Lato', sans-serif;
 }
 
@@ -117,6 +125,38 @@
     }
 }
 
+/*--------------------------------PAGE SINGLE-PRODUIT--------------------------------*/
+.single-product > main > .taille > .product > .images > a > img {
+    width: 450px;
+    margin: 0 auto;
+}
+
+/*--------------------------------IMAGES BOUTIQUE-----------------------------------*/
+
+.woocommerce ul.products li.product a img {
+    width: auto;
+    height: 125px;
+    margin: 0 auto;
+}
+
+
+/*---------------------------------------------BOUTIQUE----------------------------------------------------*/
+
+/*-Couleur étoiles-*/
+.star-rating > span::before, .woocommerce .star-rating span{
+    color: #335554;
+}
+
+/*----------------------------BOUTON "SOUMETTRE" DANS AVIS--------------------------*/
+.woocommerce #respond input#submit {
+    width: 125px;
+    height: 50px;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active{
+    z-index: 1;
+}
+
 /*----------------------------------------BOUTONS PAGE BOUTIQUE----------------------------------------*/
 @media (min-width: 769px) {
     .post-type-archive > main > .taille > .products > .product > .button {
@@ -137,8 +177,11 @@
 @media (max-width: 1000px) {
     .product {
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
         align-items: center;
+        -webkit-align-items: center;
     }
 
     .single-product > main > .taille > .product > .summary > .cart > button {
@@ -158,13 +201,18 @@
 @media (max-width: 1000px) {
     .page-panier > main > .taille > .woocommerce {
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
         align-items: center;
+        -webkit-align-items: center;
     }
 
     .page-panier > main > .taille > .woocommerce > .cart-collaterals > .cart_totals {
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
         float: none;
         margin: auto;
     }
@@ -174,8 +222,11 @@
 @media (max-width: 1000px) {
     .page-commande > main > .taille > .woocommerce > .woocommerce-checkout > .col2-set {
         display: flex;
+        display: -webkit-flex;
         flex-direction: column;
+        -webkit-flex-direction: column;
         align-items: center;
+        -webkit-align-items: center;
     }
 
     .page-commande > main > .taille > .woocommerce > .woocommerce-checkout > .col2-set > .col-1 {
@@ -187,7 +238,8 @@
     }
 
     #place_order {
-        width: 30%;
+        width: 200px;
+        margin-top: 60px;
         float: none !important;
     }
 }
@@ -204,7 +256,9 @@
 @media (min-width: 1000px) {
     .single-product > main > .taille > .type-product > .woocommerce-tabs > .woocommerce-Tabs-panel > p {
         display: flex;
+        display: -webkit-flex;
         justify-content: center;
+        -webkit-justify-content: center;
     }
 }
 
