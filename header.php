@@ -85,7 +85,7 @@
     <!-- Choisi aléatoirement une image parmis une liste pour la transformer en fond de l'en-tête de toutes les pages sauf page d'accueil. Utilisation du php car l'image est choisie avant
      le chargement de la page ce qui permet d'améliorer les temps de chargement-->
     <?php
-    $bg = array('https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/11/background_2.jpg', 'https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/11/panier1.jpg'); // images to choose from
+    $bg = array('https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/11/background_2.jpg', 'https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/12/image_fond_raisin.jpg', 'https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/12/image_fond_plat.jpg', 'https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/12/image_fond_planche.jpg', 'https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/12/image_fond_fraises.jpg'); // images to choose from
     $i = rand(0, count($bg) - 1); // Génère un nombre aléatoire en fonction de la taille du tableau
     $selectedBg = $bg[$i]; // Définit la variable en fonction de l'image qui à été choisie.
     ?>
