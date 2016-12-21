@@ -133,12 +133,15 @@ add_action('wp_footer', 'debug_template');
 
 // Partie WooCommerce
 
+/** Indique que le thème est supporté par Woocommerce */
 
 add_action('after_setup_theme', 'woocommerce_support');
 function woocommerce_support()
 {
     add_theme_support('woocommerce');
 }
+
+/** Ajout d'un wrapper personnalisé qui enveloppe le contenu principal d'un main et d'un div taille */
 
 remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
@@ -156,11 +159,15 @@ function my_theme_wrapper_end()
     echo '</div></main>';
 }
 
+/** Supprime la navigation générée par Woocommerce avant le contenu principal */
+
 add_action('init', 'jk_remove_wc_breadcrumbs');
 function jk_remove_wc_breadcrumbs()
 {
     remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 }
+
+/** Modifie le texte du bouton ajouter au panier */
 
 add_filter('woocommerce_product_add_to_cart_text', 'woo_archive_custom_cart_button_text');    // 2.1 +
 
@@ -171,6 +178,8 @@ function woo_archive_custom_cart_button_text()
 
 }
 
+/** Ajout d'un section alerte pour les tarifs adhérents après chaque produit */
+
 function show_alert_adherents()
 {
     echo '<div class="alert"><p>Tarif adhérents</p><p>7€ pour les adhérents à l\'association Eco-Campus</p></div>';
@@ -178,10 +187,10 @@ function show_alert_adherents()
 
 add_action('woocommerce_after_shop_loop_item', 'show_alert_adherents', 20);
 
-// Hook in
+/** Suppression des champs inutiles sur la page commande */
+
 add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
 
-// Our hooked in function - $fields is passed via the filter!
 function custom_override_checkout_fields($fields)
 {
     unset($fields['billing']['billing_company']);
@@ -211,6 +220,8 @@ function woo_rename_tabs($tabs)
 
 }
 
+/** Permet de modifier le texte des boutons sur la page connexion/inscription */
+
 add_filter('gettext', 'register_text');
 add_filter('ngettext', 'register_text');
 function register_text($translated)
@@ -220,6 +231,8 @@ function register_text($translated)
 }
 
 // Rôles
+
+/** Suppression des rôles inutiles pour la boutique */
 
 if (get_role('subscriber')) {
     remove_role('subscriber');
@@ -233,7 +246,8 @@ if (get_role('contributor')) {
 if (get_role('editor')) {
     remove_role('editor');
 }
-// Add a custom user role
+
+/** Ajout du rôle adhérent qui permet un rabais sur les prix des produits marqués avec le plugin Price per role */
 
 $result = add_role('adherent', __(
 
