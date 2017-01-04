@@ -747,7 +747,8 @@ input {
 }
 
 /*------------------------------------404--------------------------------------------*/
-#404{
+.erreur{
+    max-width: 960px;
     border-radius: 5px;
     text-align: center;
     padding: 30px;
