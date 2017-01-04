@@ -1,34 +1,30 @@
 <?php
-// Supprime la barre d’outils (code HTML généré par WordPress plus concis)
+/**
+ * Supprime la barre d’outils (code HTML généré par WordPress plus concis)
+ * */
 add_action('after_setup_theme', 'plus_admin_bar');
 function plus_admin_bar()
 {
     show_admin_bar(false);
 }
 
-// définit que notre thème supporte (préfère) les balises html5
+/** Définit que notre thème supporte (préfère) les balises html5
+ * Meilleure compatibilité avec les navigateurs
+ * */
+
 add_theme_support('html5');
-/* Voir : http://codex.wordpress.org/add_theme_support
-   Pour d’autres fonctionnalités optionnelles des thèmes */
-// A ajouter en plus du 'supports' => array( ..,'thumbnail',..) pour pouvoir saisir l'image "à la une" dans l'interface d'un type personnalisé.
+
+/**
+ * Permet de mettre des "images à la une" aux articles
+ */
+
 add_theme_support('post-thumbnails');
 
-//empêcher l'éditeur wysiwyg d'ajouter des balises <p> et <br> :
-//sur les fichiers 'content'
-/*remove_filter( 'the_content', 'wpautop' );*/
-//sur les fichiers 'exerpt'
+/** Empêche l'éditeur wysiwyg d'ajouter des balises <p> et <br> :
+ * sur les fichiers 'exerpt'
+ * */
 remove_filter('the_excerpt', 'wpautop');
 
-
-// notre thème permet à l’utilisateur de saisir des menus dans l’interface d’administration
-/*add_theme_support('menus');
-/*
- * Définit le nom des menus que l’utilisateur pourra ajouter
- */
-/*register_nav_menus(array(
-    // une ligne pour chaque menu : identifiant et nom affiché
-    'principale' => 'Navigation principale',
-));
 /*
  * Ajoute les fichiers CSS, ils seront écrits par 'wp_head' juste avant la balise de fin de HEAD.
  */
@@ -42,13 +38,11 @@ function ajout_scripts()
     wp_enqueue_style('typographies-couleur', get_stylesheet_directory_uri() . '/css/typographies-couleur.css');
     wp_enqueue_style('styles-graphique', get_stylesheet_directory_uri() . '/css/styles-graphiques.css');
     wp_enqueue_style('woocommerce', get_stylesheet_directory_uri() . '/css/woocommerce.css');
-    /* Pour le JavaScript : http://codex.wordpress.org/Function_Reference/wp_enqueue_script
-       Il est possible de spécifier que ses scripts dépendent de jQuery,
-       WordPress ajoutera automatiquement les dépendances.
-    */
 }
 
-//Page Slug Body Class
+/** Permet de générer une classe aux différents body des pages
+ * */
+
 function add_slug_body_class($classes)
 {
     global $post;
@@ -57,132 +51,48 @@ function add_slug_body_class($classes)
     }
     return $classes;
 }
-
-add_filter('body_class', 'add_slug_body_class');/*
+/*
  * Ajout type personnalisé
  */
+
+add_filter('body_class', 'add_slug_body_class');
+
+/**
+ * Permet d'ajouter différents types de posts que l'on personnalise
+ */
+
 add_action('init', 'ajout_post_types');
 function ajout_post_types()
 {
-    // répétez pour chaque type : lui donner un nom ici 'recettes'
+    /**
+     * répétez pour chaque type : lui donner un nom ici 'recettes'
+     */
+    
     register_post_type('recettes',
-        // options, voir documentation
         array(
-            // Le nom au pluriel
+            /** Le nom au pluriel */
             'label' => 'Recettes',
-            // visible Eg. 'true'
+            /** visible ou pas */
             'public' => true,
-            // Si l’on veut des pages listant ce type Eg. 'true'
+            /** Si l’on veut des pages listant ce type 'true' */
             'has_archive' => true,
-            // Les Champs de formulaire qui seront saisis et affichés. Eg. Titre et Contenu. 'thumbnail' pour une image à la une (voir add_theme_support('post-thumbnails');)
+            /** Les Champs de formulaire qui seront saisis et affichés. Eg. Titre et Contenu. 'thumbnail' pour une image à la une */
             'supports' => array('title', 'editor', 'thumbnail'),
-            // Pour l’ajout de Champs personnalisé voir le plug-in Meta Box.
         )
     );
-    // Mettre en commentaire la ligne qui suit après avoir testé le bon fonctionnement.
+    /** Mettre en commentaire la ligne qui suit après avoir testé le bon fonctionnement. */
     flush_rewrite_rules(false);
 }
-
-/*
- * Ajout de taxonomie personnalisé
- */
-add_action('init', 'ajout_taxonomy');
-function ajout_taxonomy()
-{
-    // répétez pour chaque taxonomie : lui donner un nom ici 'competences'
-    register_taxonomy('competences',
-        // le type ou les types classés par cette taxonomie (séparé par des virgules)
-        array('projet'),
-        // options, voir documentation
-        array(
-            'label' => __('Compétences'), // Au minimum fixer son nom affiché ('label')
-            'hierarchical' => true // Tag (false) ou  Category (true)
-        )
-    );
-    // Mettre en commentaire la ligne qui suit après avoir testé le bon fonctionnement.
-    flush_rewrite_rules(false);
-}
-
-/*
- * Ajout de champs personnalisés (avec le plug-in Meta Box à installer)
- * http://metabox.io/docs/define-fields/
- * https://github.com/rilwis/meta-box/blob/master/demo/demo.php
- */
-/*add_filter('rwmb_meta_boxes', 'ajout_meta_boxes');
-function ajout_meta_boxes($meta_boxes)
-{
-    // Répetez pour chaque "boîte" (groupes de champs)
-    $meta_boxes[] = array(
-        // le titre de la boîte
-        'title' => 'Recette',
-        // le type ou les types ou sera affiché cette "boîte" (séparé par des virgules)
-        'pages' => array('recettes'),
-        // La liste des champs de formulaire affiché par la "boîte"
-        'fields' => array(
-            // Répeter pour chaque champ : ses options
-            array(
-                // Son nom affiché
-                'name' => 'Titre Ingrédients',
-                // Un identifiant unique, utilisé pour lire la valeur en PHP
-                'id' => 'title_ingredients',
-                // son type
-                'type' => 'text',
-            ),
-            // Répeter pour chaque champ : ses options
-            array(
-                // Son nom affiché
-                'name' => 'Ingrédients',
-                // Un identifiant unique, utilisé pour lire la valeur en PHP
-                'id' => 'ingredients',
-                // son type
-                'type' => 'wysiwyg',
-            ),
-            array(
-                // Son nom affiché
-                'name' => 'Titre Préparation',
-                // Un identifiant unique, utilisé pour lire la valeur en PHP
-                'id' => 'title_preparations',
-                // son type
-                'type' => 'text',
-            ),
-            array(
-                // Son nom affiché
-                'name' => 'Préparation',
-                // Un identifiant unique, utilisé pour lire la valeur en PHP
-                'id' => 'preparation',
-                // son type
-                'type' => 'wysiwyg',
-            ),
-            array(
-                // Son nom affiché
-                'name' => 'Titre Panier Associé',
-                // Un identifiant unique, utilisé pour lire la valeur en PHP
-                'id' => 'title_panier',
-                // son type
-                'type' => 'text',
-            ),
-            array(
-                // Son nom affiché
-                'name' => 'Panier associé',
-                // Un identifiant unique, utilisé pour lire la valeur en PHP
-                'id' => 'panier_associe',
-                // son type
-                'type' => 'wysiwyg',
-            ),
-        )
-    );
-    return $meta_boxes;
-}*/
 
 /*
  * Change les requêtes de WordPress
- * http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
 */
 add_filter('pre_get_posts', 'modifie_requete_wp');
 function modifie_requete_wp($query)
 {
-    // Est appelé pour chaque page. Testez si c'est la requête que vous voulez changer.
-    // Test si page d'accueil (front-page.php)
+    /** Est appelé pour chaque page. Testez si c'est la requête que vous voulez changer.
+    * Test si page d'accueil (front-page.php)*/
+    
     if ($query->is_home()) {
         // Limite à un résultat
         $query->query_vars['posts_per_page'] = 1;
@@ -191,12 +101,14 @@ function modifie_requete_wp($query)
 
 /**
  * Definit une taille personalisé d'image
- * http://codex.wordpress.org/Function_Reference/add_image_size
  */
+
 add_image_size('portrait', 60, 100, true);
 add_image_size('paysage', 120, 50, false);
+
 /**
  * Pour aider à trouver les templates à utiliser
+ * Indique dans la console quel template est utilisé pour la page en cours
  */
 function debug_template()
 {
@@ -209,23 +121,27 @@ $affiche_template
 Body class
 $affiche_body_class
 EOD;
-    // en commentaire dans le code HTML
+    /** en commentaire dans le code HTML*/
     echo("<!--\n$affiche_debug\n-->");
-    // Par JS dans la console
+    /** Par JS dans la console */
     $json_debug = json_encode($affiche_debug);
     echo("<script>console.log($json_debug)</script>");
 }
 
-// Laisser ce code dans le rendu final. Le mettre en commentaire APRES que j'ai noté.
+/** Permet d'appeler la fonction de débuggage et de savoir quel template est utilisé. */
 add_action('wp_footer', 'debug_template');
 
 // Partie WooCommerce
+
+/** Indique que le thème est supporté par Woocommerce */
 
 add_action('after_setup_theme', 'woocommerce_support');
 function woocommerce_support()
 {
     add_theme_support('woocommerce');
 }
+
+/** Ajout d'un wrapper personnalisé qui enveloppe le contenu principal d'un main et d'un div taille */
 
 remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
@@ -243,11 +159,15 @@ function my_theme_wrapper_end()
     echo '</div></main>';
 }
 
+/** Supprime la navigation générée par Woocommerce avant le contenu principal */
+
 add_action('init', 'jk_remove_wc_breadcrumbs');
 function jk_remove_wc_breadcrumbs()
 {
     remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 }
+
+/** Modifie le texte du bouton ajouter au panier */
 
 add_filter('woocommerce_product_add_to_cart_text', 'woo_archive_custom_cart_button_text');    // 2.1 +
 
@@ -258,6 +178,8 @@ function woo_archive_custom_cart_button_text()
 
 }
 
+/** Ajout d'un section alerte pour les tarifs adhérents après chaque produit */
+
 function show_alert_adherents()
 {
     echo '<div class="alert"><p>Tarif adhérents</p><p>7€ pour les adhérents à l\'association Eco-Campus</p></div>';
@@ -265,10 +187,10 @@ function show_alert_adherents()
 
 add_action('woocommerce_after_shop_loop_item', 'show_alert_adherents', 20);
 
-// Hook in
+/** Suppression des champs inutiles sur la page commande */
+
 add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
 
-// Our hooked in function - $fields is passed via the filter!
 function custom_override_checkout_fields($fields)
 {
     unset($fields['billing']['billing_company']);
@@ -284,6 +206,9 @@ function custom_override_checkout_fields($fields)
     return $fields;
 }
 
+/**
+ * Permet de changer le nom des onglets dans les pages single-product (ici recette et avis)
+ */
 add_filter('woocommerce_product_tabs', 'woo_rename_tabs', 98);
 function woo_rename_tabs($tabs)
 {
@@ -295,6 +220,8 @@ function woo_rename_tabs($tabs)
 
 }
 
+/** Permet de modifier le texte des boutons sur la page connexion/inscription */
+
 add_filter('gettext', 'register_text');
 add_filter('ngettext', 'register_text');
 function register_text($translated)
@@ -304,6 +231,8 @@ function register_text($translated)
 }
 
 // Rôles
+
+/** Suppression des rôles inutiles pour la boutique */
 
 if (get_role('subscriber')) {
     remove_role('subscriber');
@@ -317,7 +246,8 @@ if (get_role('contributor')) {
 if (get_role('editor')) {
     remove_role('editor');
 }
-// Add a custom user role
+
+/** Ajout du rôle adhérent qui permet un rabais sur les prix des produits marqués avec le plugin Price per role */
 
 $result = add_role('adherent', __(
 

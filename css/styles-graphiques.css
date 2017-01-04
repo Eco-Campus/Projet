@@ -229,7 +229,7 @@ header > nav {
 }
 
 .titre2 {
-    background-image: url("../image-interface/background_2.jpg");
+    /*background-image: url("../image-interface/background_2.jpg");*/
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -483,13 +483,6 @@ footer > .taille > .contact > ul {
 
 footer > .taille > .contact > ul > li {
     list-style-type: none;
-}
-
-/*---------------------------------------------BOUTIQUE----------------------------------------------------*/
-
-/*-Couleur étoiles-*/
-.star-rating > span::before{
-    color: #335554;
 }
 
 /*-----------------------------------A PROPOS--------------------------------------*/
