@@ -74,6 +74,8 @@ footer .menu > a{
     line-height: 30px;
 }
 
+/*---------------------------PAGE A PROPOS---------------------------------*/
+
 .page-a-propos .equipe li, .page-a-propos .projet li{
     list-style-type: circle;
 }
@@ -86,13 +88,16 @@ footer .menu > a{
     padding-bottom: 10px;
 }
 
-.titre > .titrage > h2 {
+/*---------------------------HEADER TOUTES LES PAGES SAUF ACCUEIL---------------------------------*/
+
+.titre > .titrage > h1 {
+    font-size: 2em;
     color: white;
     text-align: center;
 }
 
 @media(max-width: 800px){
-    .titre > .titrage > h2{
+    .titre > .titrage > h1{
         font-size: 1.3em;
         margin-top: 0;
     }
@@ -102,9 +107,20 @@ footer .menu > a{
     font-family: "Lato", sans-serif;
 }
 
+/*------------------------------------MENTIONS LEGALES-----------------------------*/
+
+.mmi > p > a{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/*---------------------------PAGE PRODUIT---------------------------------*/
+
 #produit > main > .taille > .infos-panier > p:nth-child(6), #produit > main > .taille > .infos-panier > p:nth-child(6)>a{
     color: #98c240;
 }
+
+/*---------------------------PAGE RECETTE---------------------------------*/
 
 #recette > main > .taille > ul > li > a{
     font-family: 'Noto Serif', serif;

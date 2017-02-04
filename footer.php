@@ -5,7 +5,7 @@
             <a href="https://www.facebook.com/Eco-Campus-LAssociation-1725197324371735/?fref=nf&pnref=story"><img
                     src=https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/11/ecocampus.png alt=EcoCampus_Logo></a>
             <p><span class=gras>"Eco-Campus : Les paniers garnis"</span> est un projet de l'association <span
-                    class=gras>Eco-Campus</span> de Belfort. Tout droits réservés.</p>
+                    class=gras>Eco-Campus</span> de Belfort. Tous droits réservés.</p>
         </div>
         <div class="pages">
             <h3>Pages</h3>

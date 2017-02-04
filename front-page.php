@@ -77,7 +77,7 @@
     </nav>
     <div class=titre>
         <div class=titrage>
-            <h2>Les paniers qui vous<br>donnent envie de bien manger !</h2>
+            <h1>Les paniers qui vous<br>donnent envie de bien manger !</h1>
             <a class="bouton" href="<?php echo get_permalink (get_page_by_title('Boutique')); ?>">Découvrez nos paniers</a>
         </div>
     </div>
