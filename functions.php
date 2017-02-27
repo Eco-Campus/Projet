@@ -1,9 +1,10 @@
 <?php
-/**
- * Supprime la barre d’outils (code HTML généré par WordPress plus concis)
- * */
+
 add_action('after_setup_theme', 'plus_admin_bar');
 function plus_admin_bar()
+    /**
+     * Supprime la barre d’outils (code HTML généré par WordPress plus concis)
+     * */
 {
     show_admin_bar(false);
 }
@@ -25,11 +26,12 @@ add_theme_support('post-thumbnails');
  * */
 remove_filter('the_excerpt', 'wpautop');
 
-/*
- * Ajoute les fichiers CSS, ils seront écrits par 'wp_head' juste avant la balise de fin de HEAD.
- */
+
 add_action('wp_enqueue_scripts', 'ajout_scripts');
 function ajout_scripts()
+    /**
+     * Ajoute les fichiers CSS, ils seront écrits par 'wp_head' juste avant la balise de fin de HEAD.
+     */
 {
     /* répétez la ligne qui suit pour chaque fichier CSS en modifiant :
        'typo-couleur'           un identifiant (unique pour chaque style)
@@ -40,10 +42,10 @@ function ajout_scripts()
     wp_enqueue_style('woocommerce', get_stylesheet_directory_uri() . '/css/woocommerce.css');
 }
 
-/** Permet de générer une classe aux différents body des pages
- * */
 
 function add_slug_body_class($classes)
+    /** Permet de générer une classe aux différents body des pages
+     * */
 {
     global $post;
     if (isset($post)) {
@@ -51,23 +53,24 @@ function add_slug_body_class($classes)
     }
     return $classes;
 }
+
 /*
  * Ajout type personnalisé
  */
 
 add_filter('body_class', 'add_slug_body_class');
 
-/**
- * Permet d'ajouter différents types de posts que l'on personnalise
- */
 
 add_action('init', 'ajout_post_types');
 function ajout_post_types()
+    /**
+     * Permet d'ajouter différents types de posts que l'on personnalise
+     */
 {
     /**
      * répétez pour chaque type : lui donner un nom ici 'recettes'
      */
-    
+
     register_post_type('recettes',
         array(
             /** Le nom au pluriel */
@@ -91,8 +94,8 @@ add_filter('pre_get_posts', 'modifie_requete_wp');
 function modifie_requete_wp($query)
 {
     /** Est appelé pour chaque page. Testez si c'est la requête que vous voulez changer.
-    * Test si page d'accueil (front-page.php)*/
-    
+     * Test si page d'accueil (front-page.php)*/
+
     if ($query->is_home()) {
         // Limite à un résultat
         $query->query_vars['posts_per_page'] = 1;
@@ -106,11 +109,11 @@ function modifie_requete_wp($query)
 add_image_size('portrait', 60, 100, true);
 add_image_size('paysage', 120, 50, false);
 
-/**
- * Pour aider à trouver les templates à utiliser
- * Indique dans la console quel template est utilisé pour la page en cours
- */
 function debug_template()
+    /**
+     * Pour aider à trouver les templates à utiliser
+     * Indique dans la console quel template est utilisé pour la page en cours
+     */
 {
     global $template;
     $affiche_template = print_r($template, true);
@@ -133,15 +136,12 @@ add_action('wp_footer', 'debug_template');
 
 // Partie WooCommerce
 
-/** Indique que le thème est supporté par Woocommerce */
-
 add_action('after_setup_theme', 'woocommerce_support');
 function woocommerce_support()
+    /** Indique que le thème est supporté par Woocommerce */
 {
     add_theme_support('woocommerce');
 }
-
-/** Ajout d'un wrapper personnalisé qui enveloppe le contenu principal d'un main et d'un div taille */
 
 remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
 remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
@@ -150,37 +150,37 @@ add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
 add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
 
 function my_theme_wrapper_start()
+    /** Ajout d'un wrapper personnalisé qui enveloppe le contenu principal d'un main et d'un div taille */
 {
     echo '<main><div class="taille">';
 }
 
 function my_theme_wrapper_end()
+    /** Ajout de la fermeture du wrapper personnalisé qui enveloppe le contenu principal d'un main et d'un div taille */
 {
     echo '</div></main>';
 }
 
-/** Supprime la navigation générée par Woocommerce avant le contenu principal */
 
 add_action('init', 'jk_remove_wc_breadcrumbs');
 function jk_remove_wc_breadcrumbs()
+    /** Supprime la navigation générée par Woocommerce avant le contenu principal */
 {
     remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 }
 
-/** Modifie le texte du bouton ajouter au panier */
-
 add_filter('woocommerce_product_add_to_cart_text', 'woo_archive_custom_cart_button_text');    // 2.1 +
 
 function woo_archive_custom_cart_button_text()
+    /** Modifie le texte du bouton ajouter au panier */
 {
 
     return __('Ajouter à ma commande', 'woocommerce');
 
 }
 
-/** Ajout d'un section alerte pour les tarifs adhérents après chaque produit */
-
 function show_alert_adherents()
+    /** Ajout d'un section alerte pour les tarifs adhérents après chaque produit */
 {
     echo '<div class="alert"><p>Tarif adhérents</p><p>7€ pour les adhérents à l\'association Eco-Campus</p></div>';
 }
@@ -192,6 +192,10 @@ add_action('woocommerce_after_shop_loop_item', 'show_alert_adherents', 20);
 add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
 
 function custom_override_checkout_fields($fields)
+    /**
+     * Permet de modifier les champs de commande
+     */
+
 {
     unset($fields['billing']['billing_company']);
     $fields['order']['order_comments']['placeholder'] = 'Commentaires concernant le retrait de votre commande, ex : sur l\'heure de votre passage';
@@ -206,11 +210,13 @@ function custom_override_checkout_fields($fields)
     return $fields;
 }
 
-/**
- * Permet de changer le nom des onglets dans les pages single-product (ici recette et avis)
- */
 add_filter('woocommerce_product_tabs', 'woo_rename_tabs', 98);
 function woo_rename_tabs($tabs)
+
+    /**
+     * Permet de changer le nom des onglets dans les pages single-product (ici recette et avis)
+     */
+
 {
 
     $tabs['description']['title'] = __('Recette');        // Rename the description tab
@@ -220,11 +226,12 @@ function woo_rename_tabs($tabs)
 
 }
 
-/** Permet de modifier le texte des boutons sur la page connexion/inscription */
-
 add_filter('gettext', 'register_text');
 add_filter('ngettext', 'register_text');
 function register_text($translated)
+    /**
+     * Permet de modifier le texte des boutons sur la page connexion/inscription
+     */
 {
     $translated = str_ireplace('S\'enregistrer', 'Inscription', $translated);
     return $translated;
