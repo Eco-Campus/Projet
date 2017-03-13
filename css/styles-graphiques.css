@@ -465,6 +465,10 @@ footer > .taille > .menu {
     display: none;
 }
 
+footer .pages{
+    display: block;
+}
+
 footer .pages > ul {
     list-style-type: none;
     padding: 0;
@@ -477,6 +481,12 @@ footer .pages > a {
 footer .pages a:hover {
     color: #98c240;
     transition: 0.3s ease;
+}
+
+@media (max-width: 1000px){
+    footer .pages{
+        display: none;
+    }
 }
 
 footer > .taille > .ecocampus > a > img {

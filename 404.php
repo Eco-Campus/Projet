@@ -3,7 +3,7 @@
 <main>
     <div class="erreur">
             <img
-                src="https://mmi-projet.pu-pm.univ-fcomte.fr/projets-co1617/projet1617_10/wp/wp-content/uploads/2016/11/logo_eco.png"
+                src="http://paniersgarnis.ecocampus-asso.fr/wp-content/uploads/2016/11/logo_eco.png"
                 alt="Logo Ecocampus">
             <p>Ce qu'il se passe sur cette page c'est pas vos oignons...<br>
                 Alors on va pas se prendre le chou et vous allez recharger la page !<br>

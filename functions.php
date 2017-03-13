@@ -131,9 +131,6 @@ EOD;
     echo("<script>console.log($json_debug)</script>");
 }
 
-/** Permet d'appeler la fonction de débuggage et de savoir quel template est utilisé. */
-add_action('wp_footer', 'debug_template');
-
 // Partie WooCommerce
 
 add_action('after_setup_theme', 'woocommerce_support');
@@ -274,5 +271,6 @@ $result = add_role('adherent', __(
         'update_plugin' => false, // User can’t update any plugins
         'update_core' => false // user cant perform core updates
     )
-
 );
+
+
